@@ -381,12 +381,11 @@ make menuconfig
    - **Enter Init Utilities -> Set Init**
    - **Enter Init Utilities -> Set halt**
 
-   - **Enter Linux System Utilities -> Set mount, remove Support -f (fake mount) and Support -v (verbose)**
+   - **Enter Linux System Utilities -> Set mount, disable Support -f (fake mount) and Support -v (verbose)**
    - **Enter CoreUtils -> Set cat, echo, mkdir, ls**
    - **Enter Process Utilities -> Set uptime**
    - **Enter Editor -> Set vi**
-   - **Enter Networking -> Set httpd (32 kb), remove Enaable -u <user> option, Enable HTTP authentication, Support reverse proxy, Support GZIP content encoding, Support caching via ETag header.**
-   - **Enter Networking -> Set ifconfig**
+   - **Enter Networking -> Set httpd (32 kb), Set ifconfig, disable Enaable -u <user> option, Enable HTTP authentication, Support reverse proxy, Support GZIP content encoding, Support caching via ETag header.**
 
 ### Build and Install BusyBox
 
@@ -408,6 +407,7 @@ sudo umount /mnt/rootfs
 ### Run U-Boot and Access BusyBox
 
 ```bash
+cd ~/tech.io
 ./run-u-boot.sh
 ```
 
