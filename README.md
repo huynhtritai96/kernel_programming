@@ -1,5 +1,5 @@
 # kernel_programming
-
+Reference: https://www.codingame.com/playgrounds/84444/running-u-boot-linux-kernel-in-qemu/pre-requisites 
 ## Summary of Setup and Execution Steps
 
 ### Overview
@@ -184,9 +184,27 @@ chmod +x run-u-boot.sh
 ### Expected Output
 
 ```
-U-Boot 2023.07.02 ...
-...
+U-Boot 2023.07.02 (Sep 28 2023 - 07:11:42 +0100)
+
+CPU:   rv64imafdch_zicsr_zifencei_zihintpause_zba_zbb_zbc_zbs_sstc
+Model: riscv-virtio,qemu
+DRAM:  1 GiB
+Core:  22 devices, 10 uclasses, devicetree: board
+Flash: 32 MiB
+Loading Environment from nowhere... OK
+In:    serial@10000000
+Out:   serial@10000000
+Err:   serial@10000000
+Net:   No ethernet found.
+Working FDT set to bf7307d0
 Hit any key to stop autoboot:  0
+
+Device 0: unknown device
+scanning bus for devices...
+
+Device 0: unknown device
+No ethernet found.
+No ethernet found.
 =>
 ```
 
@@ -287,13 +305,24 @@ qemu-system-riscv64 -smp 2 \
 ```
 
 ### Verify Disk Detection
-
+When the script runs, you should see output similar to the following, indicating that U-Boot has detected the disk:
 ```
+...
+Hit any key to stop autoboot:  0
+
 Device 0: QEMU VirtIO Block Device
             Type: Hard Disk
+            Capacity: 128.0 MB = 0.1 GB (262144 x 512)
+... is now current device
+Scanning virtio 0:1...
+** File not found ubootefi.var **
+Failed to load EFI variables
+** Unable to write file ubootefi.var **
+Failed to persist EFI variables
+BootOrder not defined
+EFI boot manager: Cannot load any image
+scanning bus for devices...
 ...
-```
-
 ---
 
 ## Page 10: Configure U-Boot for Kernel Boot
@@ -360,8 +389,6 @@ make menuconfig
 ### Build and Install BusyBox
 
 ```bash
-
-
 make -j$(nproc)
 make install
 ```
