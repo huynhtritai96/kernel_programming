@@ -306,6 +306,7 @@ qemu-system-riscv64 -smp 2 \
 
 ### Verify Disk Detection
 When the script runs, you should see output similar to the following, indicating that U-Boot has detected the disk:
+
 ```
 ...
 Hit any key to stop autoboot:  0
@@ -324,7 +325,7 @@ EFI boot manager: Cannot load any image
 scanning bus for devices...
 ...
 ---
-
+```
 ## Page 10: Configure U-Boot for Kernel Boot
 
 ### Set U-Boot Boot Command
