@@ -335,7 +335,7 @@ scanning bus for devices...
 cd u-boot
 make menuconfig
 ```
-
+Inside ```Boot options```, set:
 - **Boot Command:** `ext4load virtio 0:1 84000000 Image; booti 0x84000000 - ${fdtcontroladdr}`
 - **Boot Arguments:** `root=/dev/vda2 rootwait console=ttyS0 earlycon=sbi`
 
