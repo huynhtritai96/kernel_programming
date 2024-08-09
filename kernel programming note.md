@@ -708,6 +708,8 @@ This diagram represents the high-level sequence of events that occur during the 
 
 --- 
 
+--- 
+
 Summary Boot flow:
 Firmware find the bootable partion, load into memory and execute it. The bootable partion will load Kernel and start Operating system
 
