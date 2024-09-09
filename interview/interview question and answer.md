@@ -509,6 +509,8 @@ This line suggests that the interview is focused more on problem-solving and cod
    }
    ```
 
+
+
 #### 7. **Coding: Detect a loop or cycle in a linked list (explain the idea first)**
 
    The **Floyd’s Cycle Detection Algorithm** (Tortoise and Hare) is used to detect loops in a linked list. You maintain two pointers: a slow pointer that moves one step at a time and a fast pointer that moves two steps at a time. If there is a loop, the two pointers will eventually meet.
@@ -587,7 +589,102 @@ This line suggests that the interview is focused more on problem-solving and cod
        return NULL;
    }
    ```
+method 2:
+```c
+#include <stdio.h>
+#include <stdlib.h>
 
+// Definition of a linked list node
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// Function to create a new node
+struct Node* newNode(int data) {
+    struct Node* node = (struct Node*)malloc(sizeof(struct Node));
+    node->data = data;
+    node->next = NULL;
+    return node;
+}
+
+// Function to find the intersection node of two linked lists
+struct Node* getIntersectionNode(struct Node* head1, struct Node* head2) {
+    if (head1 == NULL || head2 == NULL) {
+        return NULL;
+    }
+
+    struct Node* temp1 = head1;
+    struct Node* temp2 = head2;
+
+    // Traverse both lists
+    while (temp1 != temp2) {
+        // Move temp1 to the head of the second list if it reaches the end
+        temp1 = (temp1 == NULL) ? head2 : temp1->next;
+        
+        // Move temp2 to the head of the first list if it reaches the end
+        temp2 = (temp2 == NULL) ? head1 : temp2->next;
+    }
+
+    // Either they meet at the intersection node or both will become NULL (no intersection)
+    return temp1;
+}
+
+// Function to print a linked list
+void printList(struct Node* head) {
+    while (head != NULL) {
+        printf("%d -> ", head->data);
+        head = head->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    // Create two linked lists
+    // List 1: 1 -> 2 -> 3
+    //                     \
+    //                      6 -> 7 -> NULL
+    //                     /
+    // List 2:       4 -> 5
+
+    struct Node* head1 = newNode(1);
+    head1->next = newNode(2);
+    head1->next->next = newNode(3);
+
+    struct Node* head2 = newNode(4);
+    head2->next = newNode(5);
+
+    struct Node* intersection = newNode(6);
+    intersection->next = newNode(7);
+
+    // Linking the intersection
+    head1->next->next->next = intersection; // 3 -> 6
+    head2->next->next = intersection;       // 5 -> 6
+
+    // Print both lists
+    printf("List 1: ");
+    printList(head1);
+    printf("List 2: ");
+    printList(head2);
+
+    // Find and print the intersection node
+    struct Node* intersectNode = getIntersectionNode(head1, head2);
+    if (intersectNode != NULL) {
+        printf("Intersection node data: %d\n", intersectNode->data);
+    } else {
+        printf("No intersection\n");
+    }
+
+    return 0;
+}
+
+```
+output:
+```bash
+List 1: 1 -> 2 -> 3 -> 6 -> 7 -> NULL
+List 2: 4 -> 5 -> 6 -> 7 -> NULL
+Intersection node data: 6
+```
 #### 10. **Give the examples of L2/L3 protocols**
 
    - **L2 Protocols (Data Link Layer)**:
