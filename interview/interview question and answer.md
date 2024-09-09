@@ -1,6 +1,5 @@
 # Dung Nguyen
 
-I can see that you've uploaded an image of a list of technical questions, likely related to programming and networking topics. I'll go over each question, explain the concepts, and provide examples where necessary.
 
 ### 1. **Introduce about yourself**
    This question typically expects a brief introduction about your professional background, skills, and key projects. Focus on your experience, technologies you're proficient in, and any key achievements.
