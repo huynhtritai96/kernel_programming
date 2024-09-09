@@ -2236,20 +2236,24 @@ int main() {
 #### 15. **Coding: Find the single element (non-duplicated) in an array using a bitwise XOR operator**
    Example:
    ```c
+   #include <stdio.h>
+   
+   // Function to find the single non-duplicated element using XOR
    int find_single_element(int arr[], int n) {
        int result = 0;
        for (int i = 0; i < n; i++) {
-           result ^= arr[i];  // XOR operation cancels out duplicates
+           result ^= arr[i];  // XOR cancels out duplicate elements
        }
-       return result;
+       return result;  // The result is the single non-duplicated element
    }
-
+   
    int main() {
-       int arr[] = {1, 2, 3, 3, 2, 1, 4};
-       int n = sizeof(arr) / sizeof(arr[0]);
-       printf("Single element is %d\n", find_single_element(arr, n));
+       int arr[] = {1, 2, 3, 3, 2, 1, 4};  // Example array with a single unique element
+       int n = sizeof(arr) / sizeof(arr[0]);  // Calculate the number of elements in the array
+       printf("Single element is %d\n", find_single_element(arr, n));  // Print the result
        return 0;
    }
+
    ```
 
 ---
