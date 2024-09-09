@@ -2076,6 +2076,53 @@ Let's go through the questions from the image you uploaded and provide detailed 
    print(check_passage("hello world", "hold"))
    ```
 
+```c
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+#define ALPHABET_SIZE 26
+
+// Function to check if all letters of passage2 are present in passage1
+int check_passage(const char* passage1, const char* passage2) {
+    int letters[ALPHABET_SIZE] = {0};  // Array to store counts of each letter
+
+    // Increment counts for each letter in passage1
+    for (int i = 0; passage1[i] != '\0'; i++) {
+        if (isalpha(passage1[i])) {
+            letters[tolower(passage1[i]) - 'a']++;
+        }
+    }
+
+    // Check if each letter in passage2 is available in passage1
+    for (int i = 0; passage2[i] != '\0'; i++) {
+        if (isalpha(passage2[i])) {
+            int index = tolower(passage2[i]) - 'a';
+            if (letters[index] == 0) {
+                return 0;  // Letter not found or not enough occurrences
+            }
+            letters[index]--;  // Decrease count as it's being used
+        }
+    }
+
+    return 1;  // All letters found
+}
+
+int main() {
+    char passage1[] = "hello world";
+    char passage2[] = "hold";
+
+    if (check_passage(passage1, passage2)) {
+        printf("All letters of the second passage are present in the first passage.\n");
+    } else {
+        printf("Some letters of the second passage are missing in the first passage.\n");
+    }
+
+    return 0;
+}
+
+```
+
 ---
 
 ### Khiet Nguyen
