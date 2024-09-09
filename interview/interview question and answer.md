@@ -1601,6 +1601,27 @@ Let's go through the questions from the latest image one by one, offering detail
        return NULL;  // No intersection
    }
    ```
+Method 2:
+```c
+struct Node* get_intersection_node(struct Node* head1, struct Node* head2) {
+    if (head1 == NULL || head2 == NULL)
+        return NULL;
+
+    struct Node *temp1 = head1;
+    struct Node *temp2 = head2;
+
+    // Traverse both lists, switching heads when one pointer reaches the end
+    while (temp1 != temp2) {
+        // Move to the next node or switch to the other list's head
+        temp1 = (temp1 == NULL) ? head2 : temp1->next;
+        temp2 = (temp2 == NULL) ? head1 : temp2->next;
+    }
+
+    // Either both pointers are NULL (no intersection) or both meet at the intersection point
+    return temp1;  // or temp2, they will be the same
+}
+
+```
 
 #### 11. **Live Code 4: Create a TCP socket server (for all Ethernets are listening), sequence and describe**
 
