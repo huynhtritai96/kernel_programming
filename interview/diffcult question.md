@@ -38,3 +38,6 @@
   - **Characteristics**: Variable value cannot be changed after initialization.
   - **Initialization**: A constant variable must be assigned a value upon creation. the same ease of access as global variables, which can be directly manipulated from multiple locations in the program. In terms of memory, both static and global variables consume memory for the entire runtime of the program. For real-time performance, excessive reliance on global variables can lead to complexity in managing state and ensuring consistency across interrupts or multitasking environments.
 
+# Memory layout:
+https://www2.it.uu.se/education/course/homepage/os/vt18/module-0/mips-and-mars/mips-memory-layout/ 
+
