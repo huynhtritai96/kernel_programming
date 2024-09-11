@@ -1,5 +1,5 @@
 # Compare between static variable in an funtion, static global variable, and global variable, when use (list all), give example....
-
+Reference: https://faculty.cs.niu.edu/~freedman/241/241notes/241var2.htm
 ### Local Variables
 - **Definition**: Variables defined within a specific function.
 - **Scope**: Only accessible within the function where they are created.
